@@ -1,0 +1,48 @@
+---
+description: Backend design patterns and conventions (Java, Spring Boot)
+globs: "**/*.java"
+alwaysApply: false
+---
+
+# Backend Patterns (Java / Spring Boot)
+
+## Rule: Một chức năng = một pattern chính
+
+Mỗi feature backend chỉ lấy **một** design pattern làm mẫu chính. Áp dụng đủ cho toàn bộ flow (controller → service → repository) của chức năng đó.
+
+## Gợi ý mapping chức năng → pattern (1:1)
+
+| Chức năng | Pattern chính | Áp dụng |
+|-----------|----------------|---------|
+| CRUD sinh viên / lớp / môn… | **Command** | CreateXCommand, UpdateXCommand, DeleteXCommand; handler/executor riêng |
+| Tạo DTO/response phức tạp | **Builder** | StudentResponse.builder()…; không trộn thêm Factory cho cùng chức năng |
+| Tạo nhiều loại entity/service | **Factory** hoặc **Abstract Factory** | StudentFactory, RepositoryFactory; một feature một factory |
+| Validation đầu vào / nghiệp vụ | **Chain of Responsibility** | InputValidator → BusinessValidator → DBValidator |
+| Use case gọi nhiều service | **Facade** | StudentManagementFacade gom StudentService, ScoreService… |
+| Tính điểm / lọc / sắp xếp | **Strategy** | GpaStrategy, FilterStrategy; inject vào service xử lý |
+| Kết nối API/format bên ngoài | **Adapter** | XxxExternalApiAdapter implements XxxService |
+| Cấu hình / logging toàn cục | **Singleton** | ApplicationConfig, Logger; ít dùng, chỉ khi cần 1 instance |
+
+## Conventions
+
+- **JDK 21**, **Spring Boot**, **JPA**. Interface cho service/repository; inject qua constructor.
+- **Không trộn pattern:** Trong một feature, không dùng đồng thời Command + Strategy + Facade; chọn một làm chính.
+- Entity ↔ DTO: dùng mapper/converter (có thể dùng Builder cho DTO); không tính là “pattern chính” của feature.
+
+## Example (DTO with Builder)
+
+```java
+// ✅ GOOD: Response with Builder
+public class StudentResponse {
+  private final Long id;
+  private final String fullName;
+  // ...
+  public static Builder builder() { return new Builder(); }
+  public static class Builder { /* optional fields, build() */ }
+}
+```
+
+```java
+// ❌ BAD: Complex object built with many setters in controller
+studentResponse.setId(...); studentResponse.setName(...); // ...
+```

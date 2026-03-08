@@ -1,0 +1,41 @@
+---
+description: Frontend conventions and patterns (Angular 21, TypeScript, Tailwind)
+globs: "ui/**/*.{ts,html}"
+alwaysApply: false
+---
+
+# Frontend Patterns (Angular 21 / TypeScript)
+
+## Rule: Một chức năng = một pattern chính
+
+Mỗi feature trên UI chỉ lấy **một** design pattern làm mẫu chính, đồng bộ với pattern đã chọn cho chức năng đó ở backend (nếu có).
+
+## Gợi ý mapping chức năng → pattern (1:1)
+
+| Chức năng (UI) | Pattern chính | Áp dụng |
+|----------------|----------------|---------|
+| Form thêm/sửa/xóa (CRUD) | **Command** | Component gửi CreateStudentCommand / UpdateStudentCommand; service gọi API tương ứng |
+| Hiển thị danh sách + bộ lọc/sắp xếp | **Strategy** | FilterStrategy, SortStrategy inject vào list component; một màn hình một strategy chính |
+| Màn hình gom nhiều nguồn dữ liệu | **Facade** | StudentDetailFacade gom student, scores, class; component chỉ gọi facade |
+| Real-time cập nhật (thông báo, trạng thái) | **Observer** | Service expose Observable/signal; component subscribe hoặc dùng async pipe |
+| Gọi API bên ngoài / format khác backend | **Adapter** | Wrapper service (Adapter) chuẩn hóa interface cho app |
+| Luồng xử lý cố định (wizard, import) | **Template Method** | Base class/abstract step; từng bước override |
+
+## Conventions
+
+- **Angular 21**, **TypeScript**, **Tailwind**. Standalone components; signals, typed forms, control flow.
+- **Một feature một pattern:** Không kết hợp Command + Strategy + Observer trong cùng một màn hình/chức năng; chọn một làm chính.
+- DTO/interface khớp backend; dùng facade/view model cho màn hình phức tạp. Style: Tailwind, hạn chế inline CSS.
+
+## Example (typed form)
+
+```typescript
+// ✅ GOOD: Typed reactive form
+form = this.fb.group({
+  fullName: ['', Validators.required],
+  email: ['', [Validators.required, Validators.email]],
+});
+
+// ❌ BAD: Untyped FormGroup with any
+form = new FormGroup({ fullName: new FormControl('') });
+```
