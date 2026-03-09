@@ -3,6 +3,7 @@
 # -----------------------------------------------------------------------------
 ui/node_modules/
 ui/dist/
+ui/ui/
 ui/.angular/
 ui/.vite/
 ui/coverage/
