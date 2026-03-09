@@ -1,0 +1,23 @@
+<div class="about-page">
+  <header class="about-header">
+    <h1>Giới thiệu Design Pattern</h1>
+    <p class="lead">Hệ thống EduManager Pro áp dụng các mẫu thiết kế (GoF) trên Frontend. Dưới đây là từng pattern, trang sử dụng và mô tả chức năng.</p>
+  </header>
+
+  <section class="pattern-list">
+    @for (item of patterns; track item.name) {
+      <article class="pattern-card">
+        <h2 class="pattern-name">{{ item.name }}</h2>
+        <div class="pattern-meta">
+          <span class="meta-label">Trang:</span>
+          <span class="meta-value">{{ item.page }}</span>
+        </div>
+        <div class="pattern-meta">
+          <span class="meta-label">Đường dẫn:</span>
+          <span class="meta-value route">{{ item.route }}</span>
+        </div>
+        <p class="pattern-desc">{{ item.description }}</p>
+      </article>
+    }
+  </section>
+</div>

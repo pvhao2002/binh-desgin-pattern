@@ -1,0 +1,54 @@
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">EduManager Pro</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a routerLink="/departments" routerLinkActive="active" class="nav-link">
+        <span class="icon">🏛️</span> Departments
+      </a>
+      <a routerLink="/classes" routerLinkActive="active" class="nav-link">
+        <span class="icon">🏷️</span> Classes
+      </a>
+      <a routerLink="/students" routerLinkActive="active" class="nav-link">
+        <span class="icon">🎓</span> Students
+      </a>
+      <a routerLink="/subjects" routerLinkActive="active" class="nav-link">
+        <span class="icon">📚</span> Subjects
+      </a>
+      <a routerLink="/semesters" routerLinkActive="active" class="nav-link">
+        <span class="icon">📅</span> Semesters
+      </a>
+      <a routerLink="/lecturers" routerLinkActive="active" class="nav-link">
+        <span class="icon">👨‍🏫</span> Lecturers
+      </a>
+      <a routerLink="/rooms" routerLinkActive="active" class="nav-link">
+        <span class="icon">🚪</span> Rooms
+      </a>
+      <a routerLink="/course-classes" routerLinkActive="active" class="nav-link">
+        <span class="icon">🏫</span> Course Classes
+      </a>
+      <a routerLink="/schedules" routerLinkActive="active" class="nav-link">
+        <span class="icon">⏰</span> Schedules
+      </a>
+      <a routerLink="/scores" routerLinkActive="active" class="nav-link">
+        <span class="icon">📈</span> Scores
+      </a>
+      <a routerLink="/about" routerLinkActive="active" class="nav-link">
+        <span class="icon">📖</span> About
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <div class="top-header">
+      <div class="user-profile">
+        <span class="avatar">A</span>
+        <span class="name">Admin User</span>
+      </div>
+    </div>
+    <div class="content-wrapper">
+      <router-outlet />
+    </div>
+  </main>
+</div>

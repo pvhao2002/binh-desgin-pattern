@@ -1,0 +1,15 @@
+<div class="page">
+  <h1>{{ isEdit() ? 'Edit Subject' : 'New Subject' }}</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="field"><label>Name</label><input formControlName="subjectName" /></div>
+    <div class="field"><label>Credits</label><input formControlName="credits" type="number" /></div>
+    <div class="field"><label>Department</label>
+      <select formControlName="departmentId">
+        <option value="">-- Select --</option>
+        @for (d of departments(); track d.departmentId) { <option [value]="d.departmentId">{{ d.departmentName }}</option> }
+      </select>
+    </div>
+    <div class="field"><label>Description</label><textarea formControlName="description"></textarea></div>
+    <div class="actions"><button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button><a routerLink="/subjects" class="btn">Cancel</a></div>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+<div class="page">
+  <h1>{{ isEdit() ? 'Edit Schedule' : 'New Schedule' }}</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="field"><label>Course Class</label>
+      <select formControlName="courseClassId"><option value="">-- Select --</option>
+        @for (c of courseClasses(); track c.courseClassId) { <option [value]="c.courseClassId">{{ c.subjectName }} - {{ c.className }}</option> }
+      </select>
+    </div>
+    <div class="field"><label>Room</label>
+      <select formControlName="roomId"><option value="">-- Select --</option>
+        @for (r of rooms(); track r.roomId) { <option [value]="r.roomId">{{ r.roomCode }}</option> }
+      </select>
+    </div>
+    <div class="field"><label>Day of Week (1-7)</label><input formControlName="dayOfWeek" type="number" min="1" max="7" /></div>
+    <div class="field"><label>Period Start</label><input formControlName="periodStart" type="number" /></div>
+    <div class="field"><label>Period End</label><input formControlName="periodEnd" type="number" /></div>
+    <div class="field"><label>Note</label><input formControlName="note" /></div>
+    <div class="actions"><button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button><a routerLink="/schedules" class="btn">Cancel</a></div>
+  </form>
+</div>

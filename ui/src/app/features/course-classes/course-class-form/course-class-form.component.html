@@ -1,0 +1,26 @@
+<div class="page">
+  <h1>{{ isEdit() ? 'Edit Course Class' : 'New Course Class' }}</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="field"><label>Subject</label>
+      <select formControlName="subjectId"><option value="">-- Select --</option>
+        @for (s of subjects(); track s.subjectId) { <option [value]="s.subjectId">{{ s.subjectName }}</option> }
+      </select>
+    </div>
+    <div class="field"><label>Semester</label>
+      <select formControlName="semesterId"><option value="">-- Select --</option>
+        @for (s of semesters(); track s.semesterId) { <option [value]="s.semesterId">{{ s.semesterName }} ({{ s.academicYear }})</option> }
+      </select>
+    </div>
+    <div class="field"><label>Class</label>
+      <select formControlName="classId"><option value="">-- Select --</option>
+        @for (c of classes(); track c.classId) { <option [value]="c.classId">{{ c.className }}</option> }
+      </select>
+    </div>
+    <div class="field"><label>Lecturer</label>
+      <select formControlName="lecturerId"><option value="">-- Select --</option>
+        @for (l of lecturers(); track l.lecturerId) { <option [value]="l.lecturerId">{{ l.lecturerName }}</option> }
+      </select>
+    </div>
+    <div class="actions"><button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button><a routerLink="/course-classes" class="btn">Cancel</a></div>
+  </form>
+</div>

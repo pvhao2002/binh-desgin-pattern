@@ -1,0 +1,19 @@
+<div class="page">
+  <h1>Semesters</h1>
+  <a routerLink="/semesters/new" class="btn btn-primary">Add Semester</a>
+  @if (items().length) {
+    <table class="table">
+      <thead><tr><th>ID</th><th>Name</th><th>Academic Year</th><th></th></tr></thead>
+      <tbody>
+        @for (x of items(); track x.semesterId) {
+          <tr>
+            <td>{{ x.semesterId }}</td><td>{{ x.semesterName }}</td><td>{{ x.academicYear }}</td>
+            <td><a [routerLink]="['/semesters', x.semesterId, 'edit']" class="btn btn-sm">Edit</a></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  @if (!items().length && !loading()) { <p>No semesters.</p> }
+  @if (loading()) { <p>Loading...</p> }
+</div>

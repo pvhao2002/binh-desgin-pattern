@@ -1,0 +1,19 @@
+<div class="page">
+  <h1>Classes</h1>
+  <a routerLink="/classes/new" class="btn btn-primary">Add Class</a>
+  @if (items().length) {
+    <table class="table">
+      <thead><tr><th>ID</th><th>Name</th><th>Course Year</th><th>Department</th><th></th></tr></thead>
+      <tbody>
+        @for (x of items(); track x.classId) {
+          <tr>
+            <td>{{ x.classId }}</td><td>{{ x.className }}</td><td>{{ x.courseYear }}</td><td>{{ x.departmentName }}</td>
+            <td><a [routerLink]="['/classes', x.classId, 'edit']" class="btn btn-sm">Edit</a></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  @if (!items().length && !loading()) { <p>No classes.</p> }
+  @if (loading()) { <p>Loading...</p> }
+</div>

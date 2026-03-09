@@ -1,0 +1,21 @@
+<div class="page">
+  <h1>External Students (sync source)</h1>
+  <a routerLink="/students" class="btn">Back to Students</a>
+  @if (students().length) {
+    <table class="table">
+      <thead>
+        <tr><th>Name</th><th>Email</th></tr>
+      </thead>
+      <tbody>
+        @for (s of students(); track s.studentId + s.fullName) {
+          <tr>
+            <td>{{ s.fullName }}</td>
+            <td>{{ s.email ?? '-' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  @if (!students().length && !loading()) { <p>No external students.</p> }
+  @if (loading()) { <p>Loading...</p> }
+</div>

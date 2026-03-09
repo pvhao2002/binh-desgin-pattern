@@ -1,0 +1,11 @@
+<div class="page">
+  <h1>{{ isEdit() ? 'Edit Room' : 'New Room' }}</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="field"><label>Room Code</label><input formControlName="roomCode" /></div>
+    <div class="field"><label>Building</label><input formControlName="building" /></div>
+    <div class="field"><label>Capacity</label><input formControlName="capacity" type="number" /></div>
+    <div class="field"><label>Room Type</label><input formControlName="roomType" /></div>
+    <div class="field"><label>Description</label><textarea formControlName="description"></textarea></div>
+    <div class="actions"><button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button><a routerLink="/rooms" class="btn">Cancel</a></div>
+  </form>
+</div>

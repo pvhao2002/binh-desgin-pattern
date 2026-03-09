@@ -1,0 +1,19 @@
+<div class="page">
+  <h1>Rooms</h1>
+  <a routerLink="/rooms/new" class="btn btn-primary">Add Room</a>
+  @if (items().length) {
+    <table class="table">
+      <thead><tr><th>ID</th><th>Code</th><th>Building</th><th>Capacity</th><th>Type</th><th></th></tr></thead>
+      <tbody>
+        @for (x of items(); track x.roomId) {
+          <tr>
+            <td>{{ x.roomId }}</td><td>{{ x.roomCode }}</td><td>{{ x.building ?? '-' }}</td><td>{{ x.capacity ?? '-' }}</td><td>{{ x.roomType ?? '-' }}</td>
+            <td><a [routerLink]="['/rooms', x.roomId, 'edit']" class="btn btn-sm">Edit</a></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  @if (!items().length && !loading()) { <p>No rooms.</p> }
+  @if (loading()) { <p>Loading...</p> }
+</div>

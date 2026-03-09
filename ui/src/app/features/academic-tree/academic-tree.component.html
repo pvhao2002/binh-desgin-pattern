@@ -1,0 +1,13 @@
+<div class="page">
+  <h1>Academic Tree (Department → Class → Student)</h1>
+  <a routerLink="/students" class="btn">Back</a>
+  @if (loading()) { <p>Loading...</p> }
+  @if (roots().length && !loading()) {
+    <ul class="tree">
+      @for (node of roots(); track node.id + node.type) {
+        <li><app-tree-node [node]="node" /></li>
+      }
+    </ul>
+  }
+  @if (!roots().length && !loading()) { <p>No data.</p> }
+</div>

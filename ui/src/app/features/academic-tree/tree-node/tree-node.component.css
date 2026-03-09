@@ -1,0 +1,5 @@
+.node-label { display: block; padding: 0.25rem 0; }
+.node-label.department { font-weight: bold; }
+.node-label.class { padding-left: 1rem; }
+.node-label.student { padding-left: 2rem; color: var(--color-text-muted); }
+.tree-children { list-style: none; padding-left: 0.5rem; margin: 0; }

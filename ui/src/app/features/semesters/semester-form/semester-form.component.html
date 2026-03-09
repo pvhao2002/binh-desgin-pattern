@@ -1,0 +1,8 @@
+<div class="page">
+  <h1>{{ isEdit() ? 'Edit Semester' : 'New Semester' }}</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="field"><label>Semester Name</label><input formControlName="semesterName" /></div>
+    <div class="field"><label>Academic Year</label><input formControlName="academicYear" /></div>
+    <div class="actions"><button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button><a routerLink="/semesters" class="btn">Cancel</a></div>
+  </form>
+</div>

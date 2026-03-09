@@ -1,0 +1,21 @@
+<div class="page">
+  <h1>{{ isEdit() ? 'Edit Department' : 'New Department' }}</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label>Name</label>
+      <input formControlName="departmentName" type="text" />
+    </div>
+    <div class="field">
+      <label>Established Date</label>
+      <input formControlName="establishedDate" type="date" />
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+    </div>
+    <div class="actions">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
+      <a routerLink="/departments" class="btn">Cancel</a>
+    </div>
+  </form>
+</div>

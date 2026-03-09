@@ -1,0 +1,19 @@
+<div class="page">
+  <h1>Scores</h1>
+  <a routerLink="/scores/new" class="btn btn-primary">Add Score</a>
+  @if (items().length) {
+    <table class="table">
+      <thead><tr><th>ID</th><th>Student</th><th>Course Class</th><th>Continuous</th><th>Final Exam</th><th>Final</th><th></th></tr></thead>
+      <tbody>
+        @for (x of items(); track x.scoreId) {
+          <tr>
+            <td>{{ x.scoreId }}</td><td>{{ x.studentName }}</td><td>{{ x.courseClassName }}</td><td>{{ x.continuousAssessmentScore ?? '-' }}</td><td>{{ x.finalExamScore ?? '-' }}</td><td>{{ x.finalScore ?? '-' }}</td>
+            <td><a [routerLink]="['/scores', x.scoreId, 'edit']" class="btn btn-sm">Edit</a></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  @if (!items().length && !loading()) { <p>No scores.</p> }
+  @if (loading()) { <p>Loading...</p> }
+</div>

@@ -1,0 +1,5 @@
+.field { margin-bottom: 1rem; }
+.field label { display: block; margin-bottom: 0.25rem; }
+.field input, .field select, .field textarea { width: 100%; padding: 0.5rem; box-sizing: border-box; }
+.actions { margin-top: 1rem; }
+.btn-warn { background: var(--color-warn); color: #fff; border-color: var(--color-warn); }

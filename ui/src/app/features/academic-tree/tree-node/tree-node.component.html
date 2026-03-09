@@ -1,0 +1,10 @@
+<span class="node-label" [class.department]="node.type === 'department'" [class.class]="node.type === 'class'" [class.student]="node.type === 'student'">
+  {{ node.label }}
+</span>
+@if (node.children.length) {
+  <ul class="tree-children">
+    @for (child of node.children; track child.id + child.type) {
+      <li><app-tree-node [node]="child" /></li>
+    }
+  </ul>
+}

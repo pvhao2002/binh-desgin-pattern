@@ -1,0 +1,19 @@
+<div class="page">
+  <h1>Subjects</h1>
+  <a routerLink="/subjects/new" class="btn btn-primary">Add Subject</a>
+  @if (items().length) {
+    <table class="table">
+      <thead><tr><th>ID</th><th>Name</th><th>Credits</th><th>Department</th><th></th></tr></thead>
+      <tbody>
+        @for (x of items(); track x.subjectId) {
+          <tr>
+            <td>{{ x.subjectId }}</td><td>{{ x.subjectName }}</td><td>{{ x.credits ?? '-' }}</td><td>{{ x.departmentName }}</td>
+            <td><a [routerLink]="['/subjects', x.subjectId, 'edit']" class="btn btn-sm">Edit</a></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  @if (!items().length && !loading()) { <p>No subjects.</p> }
+  @if (loading()) { <p>Loading...</p> }
+</div>

@@ -1,0 +1,45 @@
+<div class="page">
+  <h1>{{ isEdit() ? 'Edit Student' : 'New Student' }}</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label>Full Name</label>
+      <input formControlName="fullName" type="text" />
+    </div>
+    <div class="field">
+      <label>Date of Birth</label>
+      <input formControlName="dateOfBirth" type="date" />
+    </div>
+    <div class="field">
+      <label>Gender</label>
+      <input formControlName="gender" type="text" />
+    </div>
+    <div class="field">
+      <label>Address</label>
+      <input formControlName="address" type="text" />
+    </div>
+    <div class="field">
+      <label>Phone</label>
+      <input formControlName="phoneNumber" type="text" />
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input formControlName="email" type="email" />
+    </div>
+    <div class="field">
+      <label>Class</label>
+      <select formControlName="classId">
+        <option value="">-- Select --</option>
+        @for (c of classes(); track c.classId) {
+          <option [value]="c.classId">{{ c.className }} ({{ c.courseYear }})</option>
+        }
+      </select>
+    </div>
+    <div class="actions">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
+      @if (isEdit() && id()) {
+        <button type="button" class="btn btn-warn" (click)="onRestore()">Restore previous version</button>
+      }
+      <a routerLink="/students" class="btn">Cancel</a>
+    </div>
+  </form>
+</div>

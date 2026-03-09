@@ -1,0 +1,23 @@
+<div class="page">
+  <h1>Schedules</h1>
+  <a routerLink="/schedules/new" class="btn btn-primary">Add Schedule</a>
+  @if (items().length) {
+    <table class="table">
+      <thead><tr><th>ID</th><th>Course Class</th><th>Room</th><th>Day</th><th>Period</th><th></th></tr></thead>
+      <tbody>
+        @for (x of items(); track x.scheduleId) {
+          <tr>
+            <td>{{ x.scheduleId }}</td>
+            <td>{{ x.courseClassLabel }}</td>
+            <td>{{ x.roomCode }}</td>
+            <td>{{ x.dayOfWeek }}</td>
+            <td>{{ x.periodStart }}-{{ x.periodEnd ?? x.periodStart }}</td>
+            <td><a [routerLink]="['/schedules', x.scheduleId, 'edit']" class="btn btn-sm">Edit</a></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  @if (!items().length && !loading()) { <p>No schedules.</p> }
+  @if (loading()) { <p>Loading...</p> }
+</div>

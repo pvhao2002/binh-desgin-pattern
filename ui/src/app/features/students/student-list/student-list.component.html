@@ -1,0 +1,56 @@
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">Students</h1>
+    <div class="page-actions">
+      <a routerLink="/students/new" class="btn btn-primary">Add Student</a>
+      <a routerLink="/students/external" class="btn">External source</a>
+      <a routerLink="/students/import" class="btn">Import</a>
+      <a routerLink="/academic-tree" class="btn">Academic tree</a>
+      <a routerLink="/reports/export" class="btn">Report export</a>
+    </div>
+  </div>
+  <div class="toolbar">
+    <select [value]="filterClassId() ?? ''" (change)="onFilterClassChange($event)">
+      <option value="">All classes</option>
+      @for (c of classes(); track c.classId) {
+      <option [value]="c.classId">{{ c.className }}</option>
+      }
+    </select>
+    <input type="text" placeholder="Search name, email, class" [value]="searchText()" (input)="onSearchInput($event)" />
+    <select [value]="sortKey()" (change)="onSortKeyChange($event)">
+      <option value="fullName">Name</option>
+      <option value="email">Email</option>
+      <option value="classId">Class ID</option>
+    </select>
+    <button type="button" (click)="toggleSortDirection()">{{ sortDirection() === 'asc' ? '↑' : '↓' }}</button>
+  </div>
+  @if (displayedStudents().length) {
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Class</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (s of displayedStudents(); track s.studentId) {
+      <tr>
+        <td>{{ s.studentId }}</td>
+        <td>{{ s.fullName }}</td>
+        <td>{{ s.email ?? '-' }}</td>
+        <td>{{ s.className }}</td>
+        <td>
+          <a [routerLink]="['/students', s.studentId, 'overview']" class="btn btn-sm">Overview</a>
+          <a [routerLink]="['/students', s.studentId, 'edit']" class="btn btn-sm">Edit</a>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  }
+  @if (!displayedStudents().length && !loading()) { <p>No students.</p> }
+  @if (loading()) { <p>Loading...</p> }
+</div>

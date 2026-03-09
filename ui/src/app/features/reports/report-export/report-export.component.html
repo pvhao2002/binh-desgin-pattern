@@ -1,0 +1,9 @@
+<div class="page">
+  <h1>Department Tree Report</h1>
+  <a routerLink="/students" class="btn">Back</a>
+  <button type="button" class="btn btn-primary" (click)="exportCsv()" [disabled]="!lines().length">Export CSV</button>
+  @if (lines().length) {
+    <pre class="report">{{ lines().join('\n') }}</pre>
+  }
+  @if (loading()) { <p>Loading...</p> }
+</div>

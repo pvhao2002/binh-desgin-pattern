@@ -1,0 +1,16 @@
+<div class="page">
+  <h1>{{ isEdit() ? 'Edit Lecturer' : 'New Lecturer' }}</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="field"><label>Name</label><input formControlName="lecturerName" /></div>
+    <div class="field"><label>Academic Degree</label><input formControlName="academicDegree" /></div>
+    <div class="field"><label>Email</label><input formControlName="email" type="email" /></div>
+    <div class="field"><label>Phone</label><input formControlName="phoneNumber" /></div>
+    <div class="field"><label>Department</label>
+      <select formControlName="departmentId">
+        <option value="">-- Select --</option>
+        @for (d of departments(); track d.departmentId) { <option [value]="d.departmentId">{{ d.departmentName }}</option> }
+      </select>
+    </div>
+    <div class="actions"><button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button><a routerLink="/lecturers" class="btn">Cancel</a></div>
+  </form>
+</div>
