@@ -1,0 +1,287 @@
+<mxfile host="app.diagrams.net" modified="2025-01-01T00:00:00.000Z" agent="EduManager" version="22.0.0" etag="arch" type="device">
+  <diagram id="architecture" name="Kiến trúc hệ thống">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Kiến trúc hệ thống EduManager Pro" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=bold;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="380" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Layer: User / Client -->
+        <mxCell id="user-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="user-label" value="Client (Trình duyệt)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=bold;" vertex="1" parent="1">
+          <mxGeometry x="80" y="88" width="200" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="user-desc" value="Người dùng tương tác&#xa;với giao diện Angular" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="114" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Layer: Frontend Angular -->
+        <mxCell id="ui-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="360" y="80" width="280" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ui-label" value="Frontend (Angular 21)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=bold;" vertex="1" parent="1">
+          <mxGeometry x="360" y="88" width="280" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="ui-components" value="Components&#xa;(List, Form, Overview, Import, Tree, Report)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="372" y="120" width="256" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="ui-services" value="Services / Core&#xa;(API, Command, Strategy, Facade, State, Visitor...)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="372" y="172" width="256" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="ui-http" value="HttpClient → Base URL /api" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="372" y="224" width="256" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- Layer: Backend Spring Boot -->
+        <mxCell id="svc-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="720" y="80" width="280" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-label" value="Backend (Spring Boot 4)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=bold;" vertex="1" parent="1">
+          <mxGeometry x="720" y="88" width="280" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-controllers" value="Controllers (REST)&#xa;/api/departments, /students, /scores..." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="732" y="120" width="256" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-services" value="Services / Handlers&#xa;(Command, Facade, Strategy, CoR...)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="732" y="172" width="256" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-jpa" value="JPA / Repositories" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="732" y="224" width="256" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- Layer: Database -->
+        <mxCell id="db-box" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="780" y="340" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="db-label" value="MySQL&#xa;student_management" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=bold;" vertex="1" parent="1">
+          <mxGeometry x="780" y="390" width="160" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="arrow-client-ui" value="HTTP (UI)" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="user-box" target="ui-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-ui-svc" value="REST /api&#xa;(JSON)" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ui-box" target="svc-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-svc-db" value="JDBC / JPA" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="svc-box" target="db-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-db-svc" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="db-box" target="svc-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-svc-ui" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="svc-box" target="ui-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-ui-user" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="ui-box" target="user-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Ports -->
+        <mxCell id="port-ui" value=":4200" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="628" y="178" width="40" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="port-svc" value=":1122/api" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="988" y="178" width="60" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="port-db" value=":3306" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="938" y="458" width="40" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="80" y="340" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-title" value="Luồng dữ liệu" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=bold;" vertex="1" parent="1">
+          <mxGeometry x="88" y="348" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend1" value="→ Liền: Request (client → UI → API → DB)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="88" y="372" width="220" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2" value="→ Đứt: Response (DB → API → UI → client)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="88" y="392" width="220" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="legend3" value="Context path API: /api, Port backend: 1122" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="88" y="418" width="220" height="16" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="design-patterns" name="Design Patterns đã làm">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="dpt-title" value="Design Patterns đã triển khai — Frontend (UI)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=bold;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="280" y="16" width="600" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- Header row -->
+        <mxCell id="dpt-h1" value="Pattern" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#6c8ebf;fontColor=#ffffff;fontStyle=bold;" vertex="1" parent="1">
+          <mxGeometry x="40" y="56" width="140" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-h2" value="Màn hình (route)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#6c8ebf;fontColor=#ffffff;fontStyle=bold;" vertex="1" parent="1">
+          <mxGeometry x="188" y="56" width="180" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-h3" value="Component / Vai trò" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#6c8ebf;fontColor=#ffffff;fontStyle=bold;" vertex="1" parent="1">
+          <mxGeometry x="376" y="56" width="380" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- Rows: Pattern → Screen → Component -->
+        <mxCell id="dpt-r1a" value="Command" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r1b" value="/students/new, /:id/edit" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="90" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r1c" value="StudentFormComponent — CommandExecutor, Create/UpdateCommand" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="90" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r2a" value="Strategy" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r2b" value="/students" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="120" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r2c" value="StudentListComponent — FilterStrategy, SortStrategy (lọc/sắp xếp)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="120" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r3a" value="Facade" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="150" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r3b" value="/students/:id/overview" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="150" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r3c" value="StudentOverviewComponent — StudentOverviewFacadeService (gom dữ liệu)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="150" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r4a" value="Observer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r4b" value="/students (list + form)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="180" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r4c" value="StudentEventService (Subject) — Form notify, List subscribe → loadStudents" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="180" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r5a" value="Adapter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r5b" value="/students/external" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="210" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r5c" value="ExternalStudentsComponent — ExternalApiStudentAdapter (API ngoài → DTO)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="210" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r6a" value="State" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r6b" value="/students/:id/overview" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="240" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r6c" value="StudentOverviewComponent — StudentState (Active/Suspended/Graduated), canEdit/canRegister" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="240" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r7a" value="Memento" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="270" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r7b" value="/students/:id/edit" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="270" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r7c" value="StudentFormComponent — Nút Restore, gọi API restore (snapshot backend)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="270" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r8a" value="Chain of Responsibility" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r8b" value="/students/new, /:id/edit" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="300" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r8c" value="StudentFormComponent — StudentValidationPipeline (Required → EmailFormat)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="300" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r9a" value="Template Method" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="330" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r9b" value="/students/import" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="330" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r9c" value="StudentImportComponent — StudentImportFlow extends BaseImportFlow (readFile→validate→map→submit)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="330" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r10a" value="Composite" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="360" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r10b" value="/academic-tree" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="360" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r10c" value="AcademicTreeComponent + TreeNodeComponent — TreeNode (Department→Class→Student), render đệ quy" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="360" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r11a" value="Visitor" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="390" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r11b" value="/reports/export" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="390" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r11c" value="ReportExportComponent — CsvExportVisitor (visitLine, getResult → download CSV)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="390" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r12a" value="Decorator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="420" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r12b" value="/students" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="420" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r12c" value="StudentListComponent — LoggingStudentServiceDecorator bọc StudentService (log mỗi gọi)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="420" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r13a" value="Proxy" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="450" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r13b" value="/students/new, /:id/edit" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="450" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r13c" value="StudentFormComponent — StudentServiceProxy (cache getById, invalidate khi update/restore)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="450" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dpt-r14a" value="Factory" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="480" width="140" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r14b" value="/students/new, /:id/edit" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="188" y="480" width="180" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="dpt-r14c" value="StudentFormComponent — StudentCommandFactory (createFromFormValue, createUpdateCommand)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="376" y="480" width="380" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- Note -->
+        <mxCell id="dpt-note" value="Một màn hình có thể dùng nhiều pattern. Các CRUD khác (Departments, Classes, ...) gọi service trực tiếp, không áp dụng các pattern trên." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;spacingLeft=8;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="716" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

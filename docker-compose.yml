@@ -1,0 +1,53 @@
+# Docker Compose: MySQL + Backend (Spring Boot) + Frontend (Angular)
+# Environment based on service/src/main/resources/application.yml
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: binh-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-1234}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-student_management}
+      MYSQL_USER: ${DB_USERNAME:-root}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-1234}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASSWORD:-1234}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  service:
+    build:
+      context: ./service
+      dockerfile: Dockerfile
+    container_name: binh-service
+    restart: unless-stopped
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-student_management}?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8
+      DB_USERNAME: ${DB_USERNAME:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-1234}
+    ports:
+      - "${SERVICE_PORT:-1122}:1122"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: binh-ui
+    restart: unless-stopped
+    ports:
+      - "${UI_PORT:-4200}:80"
+    depends_on:
+      - service
+
+volumes:
+  mysql_data:
